@@ -1,4 +1,6 @@
-package com.pi;
+package com.pi.GUI;
+
+import com.pi.service.SelectedElementService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,5 +74,6 @@ public class StartFrame extends JFrame implements ActionListener {
         frame.setBounds(500,100,800,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        SelectedElementService.testAppFrame = frame;
     }
 }
