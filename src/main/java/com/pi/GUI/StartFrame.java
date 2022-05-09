@@ -1,5 +1,6 @@
 package com.pi.GUI;
 
+import com.pi.pages.Pages;
 import com.pi.service.SelectedElementService;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class StartFrame extends JFrame implements ActionListener {
     JButton resetButton = new JButton("RESET");
 
     public StartFrame() throws HeadlessException {
+        Pages.setUpChromeDriver();
         pageTextField.setText("192.168.0.88");
         browserNameField.setText("Chrome");
         setLayoutManager();

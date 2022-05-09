@@ -45,12 +45,11 @@ public class TestAppFrame extends JFrame implements ActionListener {
 
     private int initListWithElementsAndGetSize()
     {
-        List<String> elList = PageElements.getElements();
-        elementList = new JList<>(elList.toArray());
+        elementList = new JList<>(PageElements.getElements().toArray());
         ListSelectionModel listSelectionModel = elementList.getSelectionModel();
         listSelectionModel.addListSelectionListener(
                 new SharedListSelectionListener());
-        return elList.size()*20;
+        return PageElements.getElements().size()*20;
     }
 
     private void addComponentsToContainer() {

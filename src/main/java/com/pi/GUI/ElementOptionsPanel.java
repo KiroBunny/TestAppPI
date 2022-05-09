@@ -1,6 +1,5 @@
 package com.pi.GUI;
 
-import com.pi.LocatorListener;
 import com.pi.Model.PageElements;
 
 import javax.swing.*;
@@ -18,9 +17,7 @@ public class ElementOptionsPanel extends JPanel {
     public ElementOptionsPanel(String[] actions) {
         super(null);
         //this.locatorList.setSelectedIndex(0);
-
         this.actionList = new JComboBox<>(actions);
-        this.chooseButton.addActionListener(new LocatorListener());
         setBounds();
     }
 
@@ -44,5 +41,21 @@ public class ElementOptionsPanel extends JPanel {
                 actionList,
                 chooseButton
         };
+    }
+
+    public JComboBox<String> getLocatorList() {
+        return locatorList;
+    }
+
+    public JTextField getLocatorField() {
+        return locatorField;
+    }
+
+    public JComboBox<String> getActionList() {
+        return actionList;
+    }
+
+    public JButton getChooseButton() {
+        return chooseButton;
     }
 }

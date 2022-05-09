@@ -1,6 +1,9 @@
 package com.pi.Model;
 
+import com.pi.components.Button;
 import com.pi.components.Element;
+import com.pi.components.Locator;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,24 +17,8 @@ public class PageElements {
             "A",
             "Div"
     ));
-    static final String[] locators = new String[]{
-            "ID",
-            "Name",
-            "CSS Selector",
-            "XPath",
-            "Tag",
-            "className",
-            "Link Text",
-            "PartialLinkText",
-            "ID or Name"
-    };
-    static final String[] actions = new String[]{
-            "click",
-            "send keys",
-            "clear",
-            "submit",
-            "select"
-    };
+    static final String[] locators = Locator.locators;
+    static final String[] actions = Element.actionElement;
 
     public static List<String> getElements() {
         return elements;
