@@ -1,25 +1,29 @@
 package com.pi.Model;
 
+import com.pi.components.Element;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class PageElements {
     static List<String> elements = new ArrayList<>(Arrays.asList(
-            "Assertion",
-            "Title",
             "Button",
             "InputText",
-            "Ul",
+            "CheckBox",
             "A",
             "Div"
     ));
     static final String[] locators = new String[]{
             "ID",
             "Name",
-            "Link Text",
             "CSS Selector",
-            "XPath"
+            "XPath",
+            "Tag",
+            "className",
+            "Link Text",
+            "PartialLinkText",
+            "ID or Name"
     };
     static final String[] actions = new String[]{
             "click",

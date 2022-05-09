@@ -1,5 +1,6 @@
 package com.pi.GUI;
 
+import com.pi.LocatorListener;
 import com.pi.Model.PageElements;
 
 import javax.swing.*;
@@ -10,13 +11,16 @@ public class ElementOptionsPanel extends JPanel {
     JComboBox<String> locatorList = new JComboBox<>(PageElements.getLocators());
     JTextField locatorField = new JTextField();
     JLabel actionLabel = new JLabel("Akcja");
-    JComboBox<String> actionList = new JComboBox<>(PageElements.getActions());
+    JComboBox<String> actionList;
+    JButton chooseButton = new JButton("Dodaj");
 
-    public ElementOptionsPanel() {
+
+    public ElementOptionsPanel(String[] actions) {
         super(null);
         //this.locatorList.setSelectedIndex(0);
-        //this.locatorList.addActionListener(new LocatorListener());
 
+        this.actionList = new JComboBox<>(actions);
+        this.chooseButton.addActionListener(new LocatorListener());
         setBounds();
     }
 
@@ -27,9 +31,8 @@ public class ElementOptionsPanel extends JPanel {
 
         actionLabel.setBounds(0, 90, 200, 20);
         actionList.setBounds(0, 115, 200, 20);
-        /*locatorList.setVisible(true);
-        locatorField.setVisible(true);
-        locatorLabel.setVisible(true);*/
+
+        chooseButton.setBounds(120, 200, 80, 20);
     }
 
     public Component[] getAllComponent() {
@@ -38,7 +41,8 @@ public class ElementOptionsPanel extends JPanel {
                 locatorField,
                 locatorLabel,
                 actionLabel,
-                actionList
+                actionList,
+                chooseButton
         };
     }
 }

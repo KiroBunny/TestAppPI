@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListSelectedElements {
-    List<Element> elements;
+    List<ElementModel> elements;
 
-    public ListSelectedElements(List<Element> elements) {
+    public ListSelectedElements(List<ElementModel> elements) {
         this.elements = elements;
     }
 
-    public void addElement(Element element){
+    public void addElement(ElementModel element){
         if (elements == null) elements = new ArrayList<>();
         elements.add(element);
     }
@@ -20,7 +20,7 @@ public class ListSelectedElements {
         elements.remove(index);
     }
 
-    public int getElementIndex(Element element){
+    public int getElementIndex(ElementModel element){
         return elements.indexOf(element);
     }
 
@@ -28,11 +28,11 @@ public class ListSelectedElements {
         elements.clear();
     }
 
-    public List<Element> getElements() {
+    public List<ElementModel> getElements() {
         return elements;
     }
 
-    public void setElements(List<Element> elements) {
+    public void setElements(List<ElementModel> elements) {
         this.elements = elements;
     }
 }

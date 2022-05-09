@@ -15,7 +15,6 @@ public class TestAppFrame extends JFrame implements ActionListener {
     Container container = getContentPane();
     JLabel choseLabel = new JLabel("Wybierz element do testowania");
     JList<Object> elementList;
-    JButton chooseButton = new JButton("Wybierz");
     JPanel elementOptionsPanel = new JPanel();
 
     public TestAppFrame(String pageAddress, String browserName) {
