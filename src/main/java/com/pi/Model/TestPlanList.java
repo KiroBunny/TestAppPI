@@ -1,30 +1,28 @@
 package com.pi.Model;
 
-import com.pi.components.Element;
-
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestPlanList {
-    Map<Element, String> tesPlanList = new HashMap();
+    List<ElementModel> testPlanList = new ArrayList<>();
 
-    public void add(Element element, String value) {
-        tesPlanList.put(element, value);
+    public void add(ElementModel element) {
+        testPlanList.add(element);
     }
 
-    public String remove(Element element) {
-        return tesPlanList.remove(element);
+    public boolean remove(ElementModel element) {
+        return testPlanList.remove(element);
     }
 
     public void clear() {
-        tesPlanList.clear();
+        testPlanList.clear();
     }
 
-    public Map<Element, String> getTesPlanList() {
-        return tesPlanList;
+    public List<ElementModel> getTesPlanList() {
+        return testPlanList;
     }
 
-    public void setTesPlanList(Map<Element, String> tesPlanList) {
-        this.tesPlanList = tesPlanList;
+    public void setTesPlanList(List<ElementModel> tesPlanList) {
+        this.testPlanList = tesPlanList;
     }
 }

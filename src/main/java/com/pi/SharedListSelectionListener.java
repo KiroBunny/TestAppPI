@@ -19,9 +19,8 @@ public class SharedListSelectionListener implements ListSelectionListener {
             // Find out which indexes are selected.
             int minIndex = eventSource.getMinSelectionIndex();
 
-            if (eventSource.isSelectedIndex(minIndex)) {
-                System.out.println(" " + minIndex);
-                service.showNetElements(minIndex);
+            if (eventSource.isSelectedIndex(minIndex) && eventSource.getValueIsAdjusting()) {
+                System.out.println(" " + minIndex + "   " + eventSource.getValueIsAdjusting());
             }
         }
     }

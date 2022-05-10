@@ -1,21 +1,20 @@
 package com.pi.GUI;
 
+import com.pi.Model.ElementModel;
 import com.pi.Model.PageElements;
-import com.pi.SharedListSelectionListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
-public class TestAppFrame extends JFrame implements ActionListener {
+public class TestAppFrame extends JFrame{
     final String pageAddress;
     final String browserName;
     Container container = getContentPane();
-    JLabel choseLabel = new JLabel("Wybierz element do testowania");
-    JList<Object> elementList;
-    JPanel elementOptionsPanel = new JPanel();
+    ElementOptionsPanel elementOptionsPanel = new ElementOptionsPanel(PageElements.getActions());
+    JPanel testPlanListPanel = new JPanel();
+    JList<Object> testPlanList;
 
     public TestAppFrame(String pageAddress, String browserName) {
         this.pageAddress = pageAddress;
@@ -23,9 +22,7 @@ public class TestAppFrame extends JFrame implements ActionListener {
 
         setLayoutManager();
         setLocationAndSize();
-        setVisibleToConfigElementPanel(true);
         addComponentsToContainer();
-        addActionEvent();
     }
 
     public void setLayoutManager() {
@@ -34,45 +31,36 @@ public class TestAppFrame extends JFrame implements ActionListener {
     }
 
     private void setLocationAndSize() {
-        int elementsHeight = initListWithElementsAndGetSize();
-
-        choseLabel.setBounds(50,10,200,30);
-        elementList.setBounds(50, 50, 200, elementsHeight);
-        //chooseButton.setBounds(60, elementsHeight + 70, 100, 30);
-        elementOptionsPanel.setBounds(50, elementsHeight + 70, 200, 325);
-        //elementOptionsPanel.setBackground(new Color(921213122));
-    }
-
-    private int initListWithElementsAndGetSize()
-    {
-        elementList = new JList<>(PageElements.getElements().toArray());
-        ListSelectionModel listSelectionModel = elementList.getSelectionModel();
-        listSelectionModel.addListSelectionListener(
-                new SharedListSelectionListener());
-        return PageElements.getElements().size()*20;
+        elementOptionsPanel.setBounds(50, 10, 200, 450);
+        testPlanListPanel.setBounds(550, 50, 200, 450);
+        //testPlanListPanel.setBackground(new Color(123213));
     }
 
     private void addComponentsToContainer() {
-        container.add(choseLabel);
-        container.add(elementList);
         container.add(elementOptionsPanel);
+        container.add(testPlanListPanel);
     }
 
-    public void addToElementOptionPanel(Component component){
+    public void addToElementOptionPanel(Component component) {
         elementOptionsPanel.add(component);
         elementOptionsPanel.repaint();
         elementOptionsPanel.setVisible(true);
     }
 
-    public void setVisibleToConfigElementPanel(boolean flag) {
-        elementOptionsPanel.setVisible(flag);
-    }
+    public void addToTestPlanListPanel(List<ElementModel> elementList) {
+        List<String> list = new ArrayList<>();
+        for (ElementModel e :
+                elementList) {
+            list.add(e.toString());
+        }
 
-    private void addActionEvent() {
-    }
+        testPlanList = new JList<>(list.toArray());
+        System.out.println(list);
+        testPlanList.setBounds(550,50,200,450);
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+        testPlanListPanel.add(testPlanList);
+        System.out.println("Dodano nowy element do planu " + elementList.get(elementList.size()-1));
+        testPlanListPanel.repaint();
+        testPlanListPanel.setVisible(true);
     }
 }
