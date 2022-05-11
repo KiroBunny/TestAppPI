@@ -5,25 +5,31 @@ public class ElementModel {
     final String value;
     final String findBy;
     final String action;
+    final Object parameter;
 
-    public ElementModel(String type, String value, String findBy, String action) {
+    public ElementModel(String type, String value, String findBy, String action, Object parameter) {
         this.type = type;
         this.value = value;
         this.findBy = findBy;
         this.action = action;
+        this.parameter = parameter;
     }
 
-    public ElementModel(int index, String value, int locator, int action) {
+    public ElementModel(int index, String value, int locator, int action, Object parameter) {
         this.type = PageElements.getElements().get(index);
         this.value = value;
         this.findBy = PageElements.getLocators()[locator];
         this.action = PageElements.getActions()[action];
+        this.parameter = parameter;
     }
 
     @Override
     public String toString() {
-        return "" + type + '\n' +
-                "\tfindBy='" + findBy + " " + value + '\n' +
-                "\taction='" + action + '\n';
+        if (!action.equals("")) {
+            return type + '\n' +
+                    "\t - " + findBy + " " + value + '\n' +
+                    "\t - " + action.substring(0, action.indexOf('(') + 1) + parameter + ')';
+        }
+        return type + ": " + value;
     }
 }

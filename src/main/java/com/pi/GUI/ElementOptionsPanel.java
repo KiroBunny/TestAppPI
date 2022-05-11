@@ -1,15 +1,14 @@
 package com.pi.GUI;
 
+import com.pi.AssertionListener;
 import com.pi.Model.PageElements;
-import com.pi.SharedListSelectionListener;
 import com.pi.service.SelectedElementService;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ElementOptionsPanel extends JPanel  implements ActionListener {
+public class ElementOptionsPanel extends JPanel implements ActionListener {
     JLabel choseLabel = new JLabel("Wybierz element do testowania");
     JList<Object> elementList;
     JLabel locatorLabel = new JLabel("Znajdz po:");
@@ -17,6 +16,7 @@ public class ElementOptionsPanel extends JPanel  implements ActionListener {
     JTextField locatorField = new JTextField();
     JLabel actionLabel = new JLabel("Akcja");
     JComboBox<String> actionList;
+    JTextField actionParameterField = new JTextField();
     JButton chooseButton = new JButton("Dodaj");
 
     SelectedElementService service = new SelectedElementService();
@@ -24,10 +24,13 @@ public class ElementOptionsPanel extends JPanel  implements ActionListener {
 
     public ElementOptionsPanel(String[] actions) {
         super(null);
-        //this.locatorList.setSelectedIndex(0);
+
         this.actionList = new JComboBox<>(actions);
+        this.actionList.addItem("Assertion");
         setBounds();
-        chooseButton.addActionListener(this::actionPerformed);
+        chooseButton.addActionListener(this);
+        actionList.addActionListener(new AssertionListener());
+
         this.add(choseLabel);
         this.add(elementList);
         this.add(locatorList);
@@ -35,12 +38,13 @@ public class ElementOptionsPanel extends JPanel  implements ActionListener {
         this.add(locatorLabel);
         this.add(actionLabel);
         this.add(actionList);
+        this.add(actionParameterField);
         this.add(chooseButton);
-
     }
 
     private void setBounds() {
-        int elementsHeight = initListWithElementsAndGetSize();
+        elementList = new JList<>(PageElements.getElements().toArray());
+        this.setBounds(50, 10, 200, 450);
         choseLabel.setBounds(0, 10, 200, 30);
         elementList.setBounds(0, 50, 200, 150);
         locatorLabel.setBounds(0, 210, 200, 20);
@@ -49,13 +53,8 @@ public class ElementOptionsPanel extends JPanel  implements ActionListener {
 
         actionLabel.setBounds(0, 285, 200, 20);
         actionList.setBounds(0, 310, 200, 20);
-
+        actionParameterField.setBounds(0, 335, 200, 20);
         chooseButton.setBounds(120, 360, 80, 20);
-    }
-
-    private int initListWithElementsAndGetSize() {
-        elementList = new JList<>(PageElements.getElements().toArray());
-        return PageElements.getElements().size() * 20;
     }
 
     public JList<Object> getElementList() {
@@ -84,7 +83,8 @@ public class ElementOptionsPanel extends JPanel  implements ActionListener {
         int locator = locatorList.getSelectedIndex();
         String value = locatorField.getText();
         int action = actionList.getSelectedIndex();
+        String parameters = actionParameterField.getText();
         System.out.println("cos sie dzieje " + element + " - " + locator + " - " + value + " - " + action);
-        service.addElementToPlanList(element, locator, value, action);
+        service.addElementToPlanList(element, locator, value, action, parameters);
     }
 }
