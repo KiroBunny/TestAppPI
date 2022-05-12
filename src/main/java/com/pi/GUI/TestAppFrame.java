@@ -11,11 +11,13 @@ public class TestAppFrame extends JFrame{
     final String pageAddress;
     final String browserName;
     Container container = getContentPane();
+
     ElementOptionsPanel elementOptionsPanel = new ElementOptionsPanel(PageElements.getActions());
+
     GoToPanel goToPanel = new GoToPanel();
+    AssertPanel assertPanel = new AssertPanel();
     JPanel testPlanListPanel = new JPanel();
     JList<Object> testPlanList = new JList<>();
-
     public TestAppFrame(String pageAddress, String browserName) {
         this.pageAddress = pageAddress;
         this.browserName = browserName;
@@ -30,18 +32,20 @@ public class TestAppFrame extends JFrame{
         container.setLayout(null);
         elementOptionsPanel.setLayout(null);
         goToPanel.setLayout(null);
+        assertPanel.setLayout(null);
     }
 
     private void setLocationAndSize() {
-        testPlanListPanel.setBounds(550, 50, 400, 450);
-        testPlanList.setBounds(0,0,400,450);
-        testPlanListPanel.setBackground(new Color(13241));
+        testPlanListPanel.setBounds(550, 40, 400, 480);
+        testPlanList.setBounds(0,0,440,450);
+        testPlanListPanel.setBackground(new Color(255,255,255));
     }
 
     private void addComponentsToContainer() {
         container.add(elementOptionsPanel);
         container.add(goToPanel);
         container.add(testPlanListPanel);
+        container.add(assertPanel);
     }
 
     public void addToTestPlanListPanel(List<String> list) {
@@ -53,5 +57,9 @@ public class TestAppFrame extends JFrame{
         testPlanListPanel.setLayout(null);
 
         testPlanListPanel.setVisible(true);
+    }
+
+    public ElementOptionsPanel getElementOptionsPanel() {
+        return elementOptionsPanel;
     }
 }

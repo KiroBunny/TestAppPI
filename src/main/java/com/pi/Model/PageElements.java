@@ -19,6 +19,7 @@ public class PageElements {
     ));
     static final String[] locators = Locator.locators;
     static final String[] actions = Element.actionElement;
+    static final String[] assertionActions = Element.actionAssert;
 
     public static List<String> getElements() {
         return elements;
@@ -30,5 +31,9 @@ public class PageElements {
 
     public static String[] getActions() {
         return actions;
+    }
+
+    public static String[] getAssertionActions() {
+        return assertionActions;
     }
 }

@@ -3,7 +3,8 @@ package com.pi.service;
 import com.pi.GUI.TestAppFrame;
 import com.pi.Model.ElementModel;
 import com.pi.Model.TestPlanList;
-import com.pi.components.*;
+import com.pi.components.Element;
+import com.pi.components.Locator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class SelectedElementService {
         return testAppFrame;
     }
 
-    public void showTestPlanList(){
+    public void showTestPlanList() {
         List<String> list = new ArrayList<>();
         for (ElementModel e :
                 testPlanList.getTesPlanList()) {
@@ -34,23 +35,41 @@ public class SelectedElementService {
         testAppFrame.addToTestPlanListPanel(list);
     }
 
-    public void addElementToPlanList(int index, int locatorIndex, String value, int action, String parameter){
-        if (index < 0 || locatorIndex < 0 || action < 0 || value.equals(""))
-        {
+    public void addElementToPlanList(int action, String parameter) {
+        int index = testAppFrame.getElementOptionsPanel().getSelectedElement();
+        int locatorIndex = testAppFrame.getElementOptionsPanel().getSelectedLocator();
+        String value = testAppFrame.getElementOptionsPanel().getLocatorText();
+
+        if (index < 0 || locatorIndex < 0 || action < 0 || value.equals("")) {
             System.err.println("Podaj dobre wartosci");
-        }
-        else {
+        } else {
             testPlanList.add(new ElementModel(index, value, locatorIndex, action, parameter));
             showTestPlanList();
         }
     }
 
     public void addElementToPlanList(String text) {
-        if (text.equals("")){
+        if (text.equals("")) {
             System.err.println("---Podaj odpowiedni adres strony---");
-        }
-        else {
+        } else {
             testPlanList.add(new ElementModel("GoTo", text, "", "", ""));
+            showTestPlanList();
+        }
+    }
+
+    public void addElementToPlanList(int assertIndex, String parameter, int equalsIndex, String equals) {
+        int index = testAppFrame.getElementOptionsPanel().getSelectedElement();
+        int locatorIndex = testAppFrame.getElementOptionsPanel().getSelectedLocator();
+        String value = testAppFrame.getElementOptionsPanel().getLocatorText();
+
+        if (index < 0 || locatorIndex < 0 || value.equals("") || assertIndex < 0 || equalsIndex < 0 || equals.equals("")) {
+            System.err.println("Podaj dobre wartosci");
+        } else {
+            List<String> paramEquals = new ArrayList<>();
+            paramEquals.add(parameter);
+            paramEquals.add(equalsIndex == 0? "==": "!=");
+            paramEquals.add(equals);
+            testPlanList.add(new ElementModel(index, value, locatorIndex, assertIndex, paramEquals, true));
             showTestPlanList();
         }
     }

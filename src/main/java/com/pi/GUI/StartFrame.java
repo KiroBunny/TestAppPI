@@ -43,7 +43,6 @@ public class StartFrame extends JFrame implements ActionListener {
     }
 
     public void addComponentsToContainer() {
-        //Adding each components to the Container
         container.add(pageAddressLabel);
         container.add(browserNameLabel);
         container.add(pageTextField);

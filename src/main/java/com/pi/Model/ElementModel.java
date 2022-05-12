@@ -23,6 +23,14 @@ public class ElementModel {
         this.parameter = parameter;
     }
 
+    public ElementModel(int index, String value, int locator, int assertIndex, Object parameter, boolean b) {
+        this.type = PageElements.getElements().get(index);
+        this.value = value;
+        this.findBy = PageElements.getLocators()[locator];
+        this.action = PageElements.getAssertionActions()[assertIndex];
+        this.parameter = parameter;
+    }
+
     @Override
     public String toString() {
         if (!action.equals("")) {
