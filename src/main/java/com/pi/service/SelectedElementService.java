@@ -104,4 +104,8 @@ public class SelectedElementService {
 
         return null;
     }
+
+    public void startPlan() {
+
+    }
 }

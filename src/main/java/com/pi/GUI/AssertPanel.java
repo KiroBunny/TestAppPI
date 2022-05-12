@@ -27,7 +27,7 @@ public class AssertPanel  extends JPanel implements ActionListener {
     }
 
     private void setBounds() {
-        this.setBounds(300, 250, 200, 300);
+        this.setBounds(300, 250, 200, 200);
         assertionLabel.setBounds(0,0, 200, 20);
         assertionList.setBounds(0,25, 200, 20);
         parameterField.setBounds(0,50, 200, 20);

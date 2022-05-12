@@ -1,6 +1,5 @@
 package com.pi.GUI;
 
-import com.pi.AssertionListener;
 import com.pi.Model.PageElements;
 import com.pi.service.SelectedElementService;
 
@@ -29,7 +28,6 @@ public class ElementOptionsPanel extends JPanel implements ActionListener {
         elementList = new JList<>(PageElements.getElements().toArray());
         setBounds();
         chooseButton.addActionListener(this);
-        actionList.addActionListener(new AssertionListener());
 
         addComponents();
     }
