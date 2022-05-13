@@ -1,7 +1,8 @@
 package com.pi.GUI;
 
-import com.pi.listener.ClearListListener;
 import com.pi.Model.PageElements;
+import com.pi.Model.TestSettings;
+import com.pi.listener.ClearListListener;
 import com.pi.listener.StartPlanListener;
 
 import javax.swing.*;
@@ -9,23 +10,24 @@ import java.awt.*;
 import java.util.List;
 
 public class TestAppFrame extends JFrame {
-    final String pageAddress;
-    final String browserName;
     Container container = getContentPane();
 
     ElementOptionsPanel elementOptionsPanel = new ElementOptionsPanel(PageElements.getActions());
 
-    GoToPanel goToPanel = new GoToPanel();
-    AssertPanel assertPanel = new AssertPanel();
-    JPanel testPlanListPanel = new JPanel();
-    JList<Object> testPlanList = new JList<>();
+    GoToPanel goToPanel;
+    AssertPanel assertPanel;
+    JPanel testPlanListPanel;
+    JList<Object> testPlanList;
     JButton chooseButton = new JButton("START");
     JButton clearButton = new JButton("wyczyść");
 
     public TestAppFrame(String pageAddress, String browserName) {
-        this.pageAddress = pageAddress;
-        this.browserName = browserName;
-        this.goToPanel.setPageAddress(pageAddress);
+        TestSettings.pageAddress = pageAddress;
+        TestSettings.browserName = browserName;
+        goToPanel = new GoToPanel();
+        assertPanel = new AssertPanel();
+        testPlanListPanel = new JPanel();
+        testPlanList = new JList<>();
 
         addListenerToButtons();
         setLayoutManager();

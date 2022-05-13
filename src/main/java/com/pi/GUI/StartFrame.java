@@ -19,7 +19,6 @@ public class StartFrame extends JFrame implements ActionListener {
     JButton resetButton = new JButton("RESET");
 
     public StartFrame() throws HeadlessException {
-        Pages.setUpChromeDriver();
         pageTextField.setText("192.168.0.88");
         browserNameField.setText("Chrome");
         setLayoutManager();

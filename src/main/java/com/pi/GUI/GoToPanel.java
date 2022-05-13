@@ -1,5 +1,6 @@
 package com.pi.GUI;
 
+import com.pi.Model.TestSettings;
 import com.pi.service.SelectedElementService;
 
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class GoToPanel extends JPanel implements ActionListener {
         super(null);
         chooseButton.addActionListener(this);
         setBounds();
+        setPageAddress();
         this.add(goToLabel);
         this.add(goToField);
         this.add(chooseButton);
@@ -30,8 +32,8 @@ public class GoToPanel extends JPanel implements ActionListener {
         this.chooseButton.setBounds(120, 60, 80, 20);
     }
 
-    public void setPageAddress(String pageAddress) {
-        goToField.setText(pageAddress + "/");
+    public void setPageAddress() {
+        goToField.setText(TestSettings.pageAddress);
         goToField.setSelectedTextColor(new Color(100,100,100));
     }
 

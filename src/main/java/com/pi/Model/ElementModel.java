@@ -40,4 +40,24 @@ public class ElementModel {
         }
         return type + ": " + value;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public String getFindBy() {
+        return findBy;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public Object getParameter() {
+        return parameter;
+    }
 }
