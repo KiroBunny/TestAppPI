@@ -1,6 +1,8 @@
 package com.pi.Model;
 
-public class ElementModel {
+import java.io.Serializable;
+
+public class ElementModel implements Serializable {
     final String type;
     final String locatorText;
     final String findBy;

@@ -27,14 +27,14 @@ public class GoToPanel extends JPanel implements ActionListener {
 
     private void setBounds() {
         this.setBounds(300, 50, 200, 100);
-        this.goToLabel.setBounds(0,0,200,20);
+        this.goToLabel.setBounds(0, 0, 200, 20);
         this.goToField.setBounds(0, 25, 200, 20);
         this.chooseButton.setBounds(120, 60, 80, 20);
     }
 
     public void setPageAddress() {
         goToField.setText(TestSettings.pageAddress);
-        goToField.setSelectedTextColor(new Color(100,100,100));
+        goToField.setSelectedTextColor(new Color(100, 100, 100));
     }
 
     @Override

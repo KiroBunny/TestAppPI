@@ -1,6 +1,5 @@
 package com.pi.GUI;
 
-import com.pi.pages.Pages;
 import com.pi.service.SelectedElementService;
 
 import javax.swing.*;
@@ -71,7 +70,7 @@ public class StartFrame extends JFrame implements ActionListener {
         TestAppFrame frame = new TestAppFrame(pageAddressText, browserNameText);
         frame.setTitle("Stwórz swój własny plan testowy");
         frame.setVisible(true);
-        frame.setBounds(300,100,1000,600);
+        frame.setBounds(300, 100, 1000, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         SelectedElementService.testAppFrame = frame;

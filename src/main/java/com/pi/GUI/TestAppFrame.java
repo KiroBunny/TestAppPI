@@ -1,6 +1,5 @@
 package com.pi.GUI;
 
-import com.pi.Model.ElementModel;
 import com.pi.Model.PageElements;
 import com.pi.Model.TestSettings;
 import com.pi.listener.ClearListListener;
@@ -27,6 +26,7 @@ public class TestAppFrame extends JFrame {
     JButton clearElementButton = new JButton("usuń");
     JButton clearPlanButton = new JButton("wyczyść");
     JButton startButton = new JButton("START");
+
     public TestAppFrame(String pageAddress, String browserName) {
         TestSettings.pageAddress = pageAddress;
         TestSettings.browserName = browserName;
@@ -83,7 +83,7 @@ public class TestAppFrame extends JFrame {
         testPlanList.setListData(list.toArray());
 
         testPlanListPanel.add(testPlanList);
-        if (list.size()>0) System.out.println("Dodano nowy element do planu " + list.get(list.size() - 1));
+        if (list.size() > 0) System.out.println("Dodano nowy element do planu " + list.get(list.size() - 1));
 
         testPlanListPanel.repaint();
         testPlanListPanel.setLayout(null);

@@ -5,6 +5,9 @@ import com.pi.Model.ElementModel;
 import com.pi.Model.TestPlanList;
 import com.pi.Model.TestSettings;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,13 +49,13 @@ public class SelectedElementService {
     public void addElementToPlanList(String text) {
         if (text.equals("")) {
             System.err.println("---Podaj odpowiedni adres strony---");
-        } else if (text.equals(TestSettings.pageAddress)){
+        } else if (text.equals(TestSettings.pageAddress)) {
             testPlanList.add(new ElementModel("GoTo", text, "HomePage", "", ""));
             showTestPlanList();
-        }else if (text.contains("login")){
+        } else if (text.contains("login")) {
             testPlanList.add(new ElementModel("GoTo", text, "LoginPage", "", ""));
             showTestPlanList();
-        }else {
+        } else {
             testPlanList.add(new ElementModel("GoTo", text, "", "", ""));
             showTestPlanList();
         }
@@ -88,5 +91,59 @@ public class SelectedElementService {
         int id = testAppFrame.getTestPlanList().getSelectedIndex();
         testPlanList.remove(testPlanList.getTesPlanList().get(id));
         showTestPlanList();
+    }
+
+    public void saveToFile() {
+        String filePath = getFilePath();
+        if (!filePath.equals("")) {
+            try {
+                FileOutputStream writeData = new FileOutputStream(filePath);
+                ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
+
+                writeStream.writeObject(testPlanList.getTesPlanList());
+                writeStream.flush();
+                writeStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else System.err.println("Nie znaleziono pliku ");
+    }
+
+    public void readFromFile() {
+        String filePath = getFilePath();
+        if (!filePath.equals("")) {
+            try {
+                FileInputStream readData = new FileInputStream(filePath);
+                ObjectInputStream readStream = new ObjectInputStream(readData);
+
+                ArrayList<ElementModel> list = (ArrayList<ElementModel>) readStream.readObject();
+                readStream.close();
+
+                testPlanList.setTesPlanList(list);
+                showTestPlanList();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else System.err.println("Nie znaleziono pliku ");
+    }
+
+    private String getFilePath() {
+        JFrame parentFrame = new JFrame();
+
+        JFileChooser fileChooser = new JFileChooser();
+
+        fileChooser.setDialogTitle("Specify a file to save");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+        fileChooser.setFileFilter(filter);
+        int userSelection = fileChooser.showSaveDialog(parentFrame);
+
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            String fileToSave = fileChooser.getSelectedFile().getAbsolutePath();
+            System.out.println("Save as file: " + fileToSave);
+            return fileToSave;
+        }
+        return "";
     }
 }

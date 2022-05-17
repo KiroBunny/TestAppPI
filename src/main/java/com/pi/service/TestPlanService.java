@@ -62,6 +62,7 @@ public class TestPlanService implements Runnable {
 
     private Element convertToElement(ElementModel elementModel) {
         Locator locator = convertToLocator(elementModel);
+        assert locator != null;
         switch (PageElements.getElements().get(1)) {
             case "Button":
                 return new Button(locator);
