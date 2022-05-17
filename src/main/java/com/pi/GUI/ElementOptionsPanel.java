@@ -92,12 +92,8 @@ public class ElementOptionsPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int element = elementList.getSelectedIndex();
-        int locator = locatorList.getSelectedIndex();
-        String value = locatorField.getText();
         int action = actionList.getSelectedIndex();
         String parameters = actionParameterField.getText();
-        System.out.println("cos sie dzieje " + element + " - " + locator + " - " + value + " - " + action);
         service.addElementToPlanList(action, parameters);
     }
 }

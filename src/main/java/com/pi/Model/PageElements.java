@@ -1,9 +1,7 @@
 package com.pi.Model;
 
-import com.pi.components.Button;
 import com.pi.components.Element;
 import com.pi.components.Locator;
-import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

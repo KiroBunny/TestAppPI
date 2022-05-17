@@ -2,30 +2,30 @@ package com.pi.Model;
 
 public class ElementModel {
     final String type;
-    final String value;
+    final String locatorText;
     final String findBy;
     final String action;
     final Object parameter;
 
-    public ElementModel(String type, String value, String findBy, String action, Object parameter) {
+    public ElementModel(String type, String locatorText, String findBy, String action, Object parameter) {
         this.type = type;
-        this.value = value;
+        this.locatorText = locatorText;
         this.findBy = findBy;
         this.action = action;
         this.parameter = parameter;
     }
 
-    public ElementModel(int index, String value, int locator, int action, Object parameter) {
+    public ElementModel(int index, String locatorText, int locator, int action, Object parameter) {
         this.type = PageElements.getElements().get(index);
-        this.value = value;
+        this.locatorText = locatorText;
         this.findBy = PageElements.getLocators()[locator];
         this.action = PageElements.getActions()[action];
         this.parameter = parameter;
     }
 
-    public ElementModel(int index, String value, int locator, int assertIndex, Object parameter, boolean b) {
+    public ElementModel(int index, String locatorText, int locator, int assertIndex, Object parameter, boolean b) {
         this.type = PageElements.getElements().get(index);
-        this.value = value;
+        this.locatorText = locatorText;
         this.findBy = PageElements.getLocators()[locator];
         this.action = PageElements.getAssertionActions()[assertIndex];
         this.parameter = parameter;
@@ -35,18 +35,18 @@ public class ElementModel {
     public String toString() {
         if (!action.equals("")) {
             return type + '\n' +
-                    "\t - " + findBy + " " + value + '\n' +
+                    "\t - " + findBy + " " + locatorText + '\n' +
                     "\t - " + action.substring(0, action.indexOf('(') + 1) + parameter + ')';
         }
-        return type + ": " + value;
+        return type + ": " + locatorText;
     }
 
     public String getType() {
         return type;
     }
 
-    public String getValue() {
-        return value;
+    public String getLocatorText() {
+        return locatorText;
     }
 
     public String getFindBy() {

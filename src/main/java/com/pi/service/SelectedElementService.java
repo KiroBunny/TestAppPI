@@ -33,12 +33,12 @@ public class SelectedElementService {
     public void addElementToPlanList(int action, String parameter) {
         int index = testAppFrame.getElementOptionsPanel().getSelectedElement();
         int locatorIndex = testAppFrame.getElementOptionsPanel().getSelectedLocator();
-        String value = testAppFrame.getElementOptionsPanel().getLocatorText();
+        String locatorText = testAppFrame.getElementOptionsPanel().getLocatorText();
 
-        if (index < 0 || locatorIndex < 0 || action < 0 || value.equals("")) {
-            System.err.println("Podaj dobre wartosci");
+        if (index < 0 || locatorIndex < 0 || action < 0 || locatorText.equals("")) {
+            System.err.println("Podaj dobre wartości");
         } else {
-            testPlanList.add(new ElementModel(index, value, locatorIndex, action, parameter));
+            testPlanList.add(new ElementModel(index, locatorText, locatorIndex, action, parameter));
             showTestPlanList();
         }
     }
@@ -64,7 +64,7 @@ public class SelectedElementService {
         String value = testAppFrame.getElementOptionsPanel().getLocatorText();
 
         if (index < 0 || locatorIndex < 0 || value.equals("") || assertIndex < 0 || equalsIndex < 0 || equals.equals("")) {
-            System.err.println("Podaj dobre wartosci");
+            System.err.println("Podaj dobre wartości");
         } else {
             List<String> paramEquals = new ArrayList<>();
             paramEquals.add(parameter);
@@ -77,5 +77,16 @@ public class SelectedElementService {
 
     public void startPlan() {
         new Thread(testPlanService).start();
+    }
+
+    public void clearList() {
+        testPlanList.clear();
+        showTestPlanList();
+    }
+
+    public void clearOneElement() {
+        int id = testAppFrame.getTestPlanList().getSelectedIndex();
+        testPlanList.remove(testPlanList.getTesPlanList().get(id));
+        showTestPlanList();
     }
 }

@@ -11,11 +11,11 @@ import java.awt.event.ActionListener;
 public class StartFrame extends JFrame implements ActionListener {
 
     Container container = getContentPane();
-    JLabel pageAddressLabel = new JLabel("Page Address");
-    JLabel browserNameLabel = new JLabel("browserName");
+    JLabel pageAddressLabel = new JLabel("Adres strony");
+    JLabel browserNameLabel = new JLabel("Nazwa przeglądarki");
     JTextField pageTextField = new JTextField();
     JTextField browserNameField = new JTextField();
-    JButton saveButton = new JButton("SAVE");
+    JButton saveButton = new JButton("ZAPISZ");
     JButton resetButton = new JButton("RESET");
 
     public StartFrame() throws HeadlessException {
@@ -34,7 +34,7 @@ public class StartFrame extends JFrame implements ActionListener {
     public void setLocationAndSize() {
         //Setting location and Size of each components using setBounds() method.
         pageAddressLabel.setBounds(50, 150, 100, 30);
-        browserNameLabel.setBounds(50, 220, 100, 30);
+        browserNameLabel.setBounds(20, 220, 150, 30);
         pageTextField.setBounds(150, 150, 150, 30);
         browserNameField.setBounds(150, 220, 150, 30);
         saveButton.setBounds(50, 300, 100, 30);
