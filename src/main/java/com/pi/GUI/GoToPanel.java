@@ -13,7 +13,7 @@ public class GoToPanel extends JPanel implements ActionListener {
     JTextField goToField = new JTextField();
     JButton chooseButton = new JButton("Dodaj");
 
-    SelectedElementService service = new SelectedElementService();
+    SelectedElementService service = SelectedElementService.getInstance();
 
     public GoToPanel() {
         super(null);
@@ -39,6 +39,7 @@ public class GoToPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println(goToField.getText() + " ------eq");
         service.addElementToPlanList(goToField.getText());
     }
 }

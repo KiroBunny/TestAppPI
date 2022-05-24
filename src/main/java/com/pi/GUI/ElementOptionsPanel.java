@@ -18,7 +18,7 @@ public class ElementOptionsPanel extends JPanel implements ActionListener {
     JTextField actionParameterField = new JTextField();
     JButton chooseButton = new JButton("Dodaj");
 
-    SelectedElementService service = new SelectedElementService();
+    SelectedElementService service = SelectedElementService.getInstance();
 
 
     public ElementOptionsPanel(String[] actions) {

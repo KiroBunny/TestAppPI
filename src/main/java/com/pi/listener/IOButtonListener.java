@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IOButtonListener implements ActionListener {
-    static final SelectedElementService service = new SelectedElementService();
+    static final SelectedElementService service = SelectedElementService.getInstance();
 
     @Override
     public void actionPerformed(ActionEvent e) {

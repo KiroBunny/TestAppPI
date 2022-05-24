@@ -15,7 +15,7 @@ public class AssertPanel  extends JPanel implements ActionListener {
     JTextField equalsField = new JTextField();
     JButton chooseButton = new JButton("Dodaj");
 
-    SelectedElementService service = new SelectedElementService();
+    SelectedElementService service = SelectedElementService.getInstance();
 
     public AssertPanel() {
         this.assertionList = new JComboBox<>(PageElements.getAssertionActions());

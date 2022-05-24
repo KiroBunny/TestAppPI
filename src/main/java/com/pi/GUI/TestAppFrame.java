@@ -27,6 +27,8 @@ public class TestAppFrame extends JFrame {
     JButton clearPlanButton = new JButton("wyczyść");
     JButton startButton = new JButton("START");
 
+    JLabel resultLabel = new JLabel();
+
     public TestAppFrame(String pageAddress, String browserName) {
         TestSettings.pageAddress = pageAddress;
         TestSettings.browserName = browserName;
@@ -65,6 +67,7 @@ public class TestAppFrame extends JFrame {
         startButton.setBounds(430, 500, 100, 40);
         clearElementButton.setBounds(730, 500, 100, 20);
         clearPlanButton.setBounds(850, 500, 100, 20);
+        resultLabel.setBounds(100, 500, 300, 40);
     }
 
     private void addComponentsToContainer() {
@@ -77,6 +80,7 @@ public class TestAppFrame extends JFrame {
         container.add(startButton);
         container.add(clearElementButton);
         container.add(clearPlanButton);
+        container.add(resultLabel);
     }
 
     public void addToTestPlanListPanel(List<String> list) {
@@ -96,5 +100,16 @@ public class TestAppFrame extends JFrame {
 
     public JList<Object> getTestPlanList() {
         return testPlanList;
+    }
+
+    public void addResultToLabel(boolean result) {
+        if (result){
+            resultLabel.setForeground(new Color(60,160,60));
+            resultLabel.setText("TEST zakończył się sukcesem");
+        }
+        else{
+            resultLabel.setForeground(Color.RED);
+            resultLabel.setText("TEST się nie powiódł - zobacz logi TestResult.txt");
+        }
     }
 }

@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ClearListListener implements ActionListener {
-    static final SelectedElementService service = new SelectedElementService();
+    static final SelectedElementService service = SelectedElementService.getInstance();
     private final String element;
 
 

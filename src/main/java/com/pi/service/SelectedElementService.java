@@ -12,12 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SelectedElementService {
+    private static SelectedElementService instance;
     public static TestAppFrame testAppFrame;
     static TestPlanList testPlanList = new TestPlanList();
     TestPlanService testPlanService;
 
-    public SelectedElementService() {
+    private SelectedElementService() {
         testPlanService = new TestPlanService(testPlanList);
+    }
+
+    public static SelectedElementService getInstance() {
+        if (instance == null) {
+            instance = new SelectedElementService();
+        }
+        return instance;
     }
 
     public static TestAppFrame getTestAppFrame() {

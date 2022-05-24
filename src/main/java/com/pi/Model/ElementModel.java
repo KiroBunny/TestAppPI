@@ -8,6 +8,7 @@ public class ElementModel implements Serializable {
     final String findBy;
     final String action;
     final Object parameter;
+    Boolean assertion = false;
 
     public ElementModel(String type, String locatorText, String findBy, String action, Object parameter) {
         this.type = type;
@@ -31,6 +32,7 @@ public class ElementModel implements Serializable {
         this.findBy = PageElements.getLocators()[locator];
         this.action = PageElements.getAssertionActions()[assertIndex];
         this.parameter = parameter;
+        assertion = b;
     }
 
     @Override
@@ -61,5 +63,9 @@ public class ElementModel implements Serializable {
 
     public Object getParameter() {
         return parameter;
+    }
+
+    public Boolean getAssertion() {
+        return assertion;
     }
 }

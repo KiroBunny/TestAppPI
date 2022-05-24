@@ -7,7 +7,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 public class SharedListSelectionListener implements ListSelectionListener {
-    static final SelectedElementService service = new SelectedElementService();
+    static final SelectedElementService service = SelectedElementService.getInstance();
 
     @Override
     public void valueChanged(ListSelectionEvent event) {
