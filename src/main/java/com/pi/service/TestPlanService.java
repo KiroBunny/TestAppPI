@@ -80,6 +80,16 @@ public class TestPlanService implements Runnable {
                 return new InputText(locator);
             case "CheckBox":
                 return new CheckBox(locator);
+            case "Image":
+                return new Image(locator);
+            case "Div":
+                return new Div(locator);
+            case "Span":
+                return new Span(locator);
+            case "Table":
+                return new Table(locator);
+            case "Inny":
+                return new Element(Browser.driver.findElement(locator.getBy()));
         }
         return new Element(Browser.driver.findElement(locator.getBy()));
     }
