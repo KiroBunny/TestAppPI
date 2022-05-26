@@ -10,8 +10,8 @@ public class TestPlanList {
         testPlanList.add(element);
     }
 
-    public boolean remove(ElementModel element) {
-        return testPlanList.remove(element);
+    public void remove(ElementModel element) {
+        testPlanList.remove(element);
     }
 
     public void clear() {
